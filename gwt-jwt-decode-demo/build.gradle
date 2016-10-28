@@ -41,7 +41,7 @@ dependencies {
     // Google Web Toolkit
     compile 'com.google.gwt:gwt-user:2.7.0'
     compile 'com.google.gwt:gwt-dev:2.7.0'
-    compile 'com.google.guava:guava-gwt:18.0'
+    compile 'com.google.guava:guava-gwt:19.0'
 
     runtime 'com.google.gwt:gwt-servlet:2.7.0'
 

@@ -22,7 +22,7 @@ archivesBaseName = 'gwt-jwt-decode'
 dependencies {
     // Google Web Toolkit
     compile 'com.google.gwt:gwt-user:2.7.0'
-    compile 'com.google.guava:guava-gwt:18.0'
+    compile 'com.google.guava:guava-gwt:19.0'
 }
 
 jar.doFirst {
