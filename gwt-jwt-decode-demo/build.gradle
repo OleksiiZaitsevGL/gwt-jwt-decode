@@ -112,7 +112,9 @@ build.doLast {
 
     // Copy files and folders to docs folder
     deleteFolder('../docs')
-    copyFilesInFolder('src/main/webapp/', '../docs/')
+    copyFilesInFolder('src/main/webapp/jwtdecodedemo', '../docs/jwtdecodedemo')
+    copyFile('src/main/webapp/JwtDecodeDemo.css', '../docs/JwtDecodeDemo.css')
+    copyFile('src/main/webapp/JwtDecodeDemo.html', '../docs/index.html')
 }
 
 private void deleteFolder(folderPath) {
@@ -135,4 +137,14 @@ private void copyFilesInFolder(sourcePath, destPath) {
     ant.copy(todir: destDir) {
         fileset(dir: sourceDir)
     }
+}
+
+private void copyFile(sourcePath, destPath) {
+    File sourceFile = new File(projectDir, sourcePath)
+    File destFile = new File(projectDir, destPath)
+    ant.echo('Copying: ' + sourcePath + ' => ' + destPath)
+    if (!destFile.parentFile.exists()) {
+        destFile.parentFile.mkdirs()
+    }
+    ant.copyfile(src: sourceFile, dest: destFile)
 }
