@@ -133,3 +133,9 @@ build {
         delete 'out'
     }
 }
+
+build.doLast {
+    // Copy GWT module folders
+    deleteFolder('docs/jwtdecodedemo')
+    copyFilesInFolder('gwt-jwt-decode-demo/build/gwt/out/jwtdecodedemo', 'docs/jwtdecodedemo')
+}
