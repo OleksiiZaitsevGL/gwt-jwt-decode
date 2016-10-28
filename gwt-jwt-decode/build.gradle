@@ -79,7 +79,7 @@ uploadArchives {
                 name 'gwt-jwt-decode'
                 packaging 'jar'
                 description 'GWT Wrapper for JWT decode.'
-                url 'http://gwt-jwt-decode.wisepersist.org/'
+                url 'https://jiakuan.github.io/gwt-jwt-decode/'
 
                 scm {
                     connection 'scm:git:git@github.com:jiakuan/gwt-jwt-decode.git'
@@ -101,7 +101,7 @@ uploadArchives {
                         name 'Jiakuan Wang'
                         email 'delight.wjk@gmail.com'
                         organization 'WisePersist'
-                        organizationUrl 'http://gwt-jwt-decode.wisepersist.org'
+                        organizationUrl 'https://jiakuan.github.io/gwt-jwt-decode/'
                         roles {
                             role 'architect'
                             role 'developer'
