@@ -45,18 +45,18 @@ allprojects {
 def skip_quality_check = project.hasProperty('check') && check == 'false'
 println("skip_quality_check: " + skip_quality_check)
 
+if (!skip_quality_check) {
+    apply from: "$rootDir/gradle/checkstyle.gradle"
+    apply from: "$rootDir/gradle/pmd.gradle"
+    apply from: "$rootDir/gradle/cpd.gradle"
+    apply from: "$rootDir/gradle/findbugs.gradle"
+    apply from: "$rootDir/gradle/jacoco.gradle"
+
+    check.dependsOn(':gwt-jwt-decode:cpdCheck')
+    check.dependsOn(':gwt-jwt-decode-demo:cpdCheck')
+}
+
 subprojects {
-    if (!skip_quality_check) {
-        apply from: "$rootDir/gradle/checkstyle.gradle"
-        apply from: "$rootDir/gradle/pmd.gradle"
-        apply from: "$rootDir/gradle/cpd.gradle"
-        apply from: "$rootDir/gradle/findbugs.gradle"
-        apply from: "$rootDir/gradle/jacoco.gradle"
-
-        check.dependsOn(':gwt-jwt-decode:cpdCheck')
-        check.dependsOn(':gwt-jwt-decode-demo:cpdCheck')
-    }
-
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
 
@@ -132,10 +132,4 @@ build {
     doFirst {
         delete 'out'
     }
-}
-
-build.doLast {
-    // Copy GWT module folders
-    deleteFolder('docs/jwtdecodedemo')
-    copyFilesInFolder('gwt-jwt-decode-demo/build/gwt/out/jwtdecodedemo', 'docs/jwtdecodedemo')
 }
