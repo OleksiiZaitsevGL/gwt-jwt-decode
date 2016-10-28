@@ -2,7 +2,7 @@
 
 GWT JWT Deocde is a simple GWT wrapper for JWT decode Javascript library, so that we can use the feature in Java code directly.
 
-[https://jiakuan.github.io/gwt-jwt-decode/]
+Please see demo here: [https://jiakuan.github.io/gwt-jwt-decode/](https://jiakuan.github.io/gwt-jwt-decode/)
 
 ## Configure Maven dependency
 
