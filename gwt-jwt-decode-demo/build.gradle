@@ -103,7 +103,6 @@ configurations {
 clean {
     deleteFolder('classes')
     deleteFolder('war')
-    deleteFolder('src/main/webapp/jwtdecodedemo')
 }
 
 build.doLast {
