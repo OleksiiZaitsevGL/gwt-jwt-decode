@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-import org.wisepersist.gwt.jwtdecode.client.Jwt;
+import org.wisepersist.gwt.jwtdecode.client.JwtDecoder;
 import org.wisepersist.gwt.jwtdecode.client.TokenJso;
 
 /**
@@ -60,7 +60,7 @@ public class JwtDecodeDemo implements EntryPoint {
       public void onClick(final ClickEvent event) {
         final String token = inputArea.getValue();
         try {
-          final TokenJso decoded = Jwt.decode(token);
+          final TokenJso decoded = JwtDecoder.decode(token);
           GWT.log("decoded: " + decoded.toJsonPretty());
           outputArea.setValue(decoded.toJsonPretty());
         } catch (final Exception ex) { //NOPMD

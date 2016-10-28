@@ -109,6 +109,10 @@ build.doLast {
     // Copy GWT module folders
     deleteFolder('src/main/webapp/jwtdecodedemo')
     copyFilesInFolder('build/gwt/out/jwtdecodedemo', 'src/main/webapp/jwtdecodedemo')
+
+    // Copy files and folders to docs folder
+    deleteFolder('../docs')
+    copyFilesInFolder('src/main/webapp/', '../docs/')
 }
 
 private void deleteFolder(folderPath) {

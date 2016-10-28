@@ -25,14 +25,14 @@ import com.google.gwt.core.client.ScriptInjector;
  * @author delight.wjk@gmail.com
  * @see <a href="https://github.com/auth0/jwt-decode">https://github.com/auth0/jwt-decode</a>
  */
-public class Jwt {
+public class JwtDecoder {
 
   private static boolean jsInjected;
 
   /**
    * Protected non-args constructor.
    */
-  protected Jwt() {
+  protected JwtDecoder() {
     // Do nothing here
   }
 
@@ -64,14 +64,14 @@ public class Jwt {
    * Injects JWT decode JavaScript into page. It will only inject once.
    */
   private static void injectJavaScript() {
-    if (!Jwt.jsInjected) {
+    if (!JwtDecoder.jsInjected) {
       final String jwtJs = JsResources.INSTANCE.jwtDecodeMin().getText();
       GWT.log("Injecting JWT JavaScript: " + jwtJs);
       ScriptInjector.fromString(jwtJs)
           .setWindow(ScriptInjector.TOP_WINDOW)
           .setRemoveTag(false)
           .inject();
-      Jwt.jsInjected = true;
+      JwtDecoder.jsInjected = true;
     }
   }
 }
