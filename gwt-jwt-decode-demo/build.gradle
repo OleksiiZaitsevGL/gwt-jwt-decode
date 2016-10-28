@@ -107,6 +107,7 @@ clean {
 
 build.doLast {
     // Copy GWT module folders
+    deleteFolder('src/main/webapp/jwtdecodedemo')
     copyFilesInFolder('build/gwt/out/jwtdecodedemo', 'src/main/webapp/jwtdecodedemo')
 }
 
