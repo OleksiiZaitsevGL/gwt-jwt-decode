@@ -2,6 +2,8 @@
 
 GWT JWT Deocde is a simple GWT wrapper for JWT decode Javascript library, so that we can use the feature in Java code directly.
 
+[https://jiakuan.github.io/gwt-jwt-decode/]
+
 ## Configure Maven dependency
 
 GWT JWT Deocde is available in Maven central repository:
@@ -66,10 +68,10 @@ In order to use snapshot releases you also need to add the Sonatype snapshots re
 Using GWT JWT decode is as simple as the following code:
 
 ```
-import org.wisepersist.gwt.jwtdecode.client.Jwt;
+import org.wisepersist.gwt.jwtdecode.client.JwtDecoder;
 import org.wisepersist.gwt.jwtdecode.client.TokenJso;
 
-final TokenJso decoded = Jwt.decode(token);
+final TokenJso decoded = JwtDecoder.decode(token);
 GWT.log("decoded: " + decoded.toJsonPretty());
 ```
 
@@ -81,4 +83,4 @@ Here are the steps:
 * After discussion about changes, fork the project and make changes
 * Run `gradle clean build` to make sure no build errors
 * Create a new pull request for review and discussion
-* After confirmation, we will merge to the pull request
+* After confirmation, we will merge the pull request to master
