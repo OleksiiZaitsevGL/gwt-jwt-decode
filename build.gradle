@@ -52,6 +52,9 @@ subprojects {
         apply from: "$rootDir/gradle/cpd.gradle"
         apply from: "$rootDir/gradle/findbugs.gradle"
         apply from: "$rootDir/gradle/jacoco.gradle"
+
+        check.dependsOn(':gwt-jwt-decode:cpdCheck')
+        check.dependsOn(':gwt-jwt-decode-demo:cpdCheck')
     }
 
     sourceCompatibility = 1.7
