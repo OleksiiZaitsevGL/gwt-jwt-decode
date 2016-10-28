@@ -33,17 +33,21 @@ jar.doFirst {
 
 ext.userHome = System.getProperty("user.home")
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ["-sourcepath", ""]
+}
+
+javadoc {
+    // Avoid error: cannot access external classes
+    options.addStringOption("sourcepath", "")
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
 }
 
-task aggregateJavadocs(type: Javadoc) {
-    source = sourceSets.main.allJava
-    failOnError = false
-}
-
-task javadocJar(type: Jar, dependsOn: aggregateJavadocs) {
+task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from 'build/docs/javadoc'
 }
@@ -72,15 +76,15 @@ uploadArchives {
             }
 
             pom.project {
-                name 'gwt-ace'
+                name 'gwt-jwt-decode'
                 packaging 'jar'
-                description 'GWT Wrapper for ACE editor.'
-                url 'http://gwt-ace.wisepersist.org/'
+                description 'GWT Wrapper for JWT decode.'
+                url 'http://gwt-jwt-decode.wisepersist.org/'
 
                 scm {
-                    connection 'scm:git:git@github.com:jiakuan/gwt-ace.git'
-                    developerConnection 'scm:git:git@github.com:jiakuan/gwt-ace.git'
-                    url 'git@github.com:jiakuan/gwt-ace.git'
+                    connection 'scm:git:git@github.com:jiakuan/gwt-jwt-decode.git'
+                    developerConnection 'scm:git:git@github.com:jiakuan/gwt-jwt-decode.git'
+                    url 'git@github.com:jiakuan/gwt-jwt-decode.git'
                 }
 
                 licenses {
@@ -95,9 +99,9 @@ uploadArchives {
                     developer {
                         id 'jiakuan'
                         name 'Jiakuan Wang'
-                        email 'jiakuan.wang@gmail.com'
+                        email 'delight.wjk@gmail.com'
                         organization 'WisePersist'
-                        organizationUrl 'http://gwt-ace.wisepersist.org'
+                        organizationUrl 'http://gwt-jwt-decode.wisepersist.org'
                         roles {
                             role 'architect'
                             role 'developer'

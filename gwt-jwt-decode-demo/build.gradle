@@ -69,15 +69,14 @@ dependencies {
     compile 'com.google.gwt.inject:gin:2.1.2'
 }
 
-
 gwt {
     gwtVersion = '2.7.0'
-    modules 'org.wisepersist.gwt.ace.demo.AceEditorDemo'
+    modules 'org.wisepersist.gwt.jwtdecode.demo.JwtDecodeDemo'
 }
 
 war {
     classpath = classpath.filter { file ->
-        println file.name
+        // println file.name
         (
                 !file.name.startsWith(('gwt-dev')) &&
                 !file.name.startsWith(('gwt-user')) &&
@@ -93,6 +92,43 @@ war {
 sourceSets.main.resources.srcDir 'src/main/java'
 sourceSets.test.resources.srcDir 'src/test/java'
 
+configurations {
+    runtime.exclude group: "com.google.gwt", module: "gwt-user"
+    runtime.exclude group: "com.google.gwt", module: "gwt-dev"
+}
+
 // changes the logging level to INFO for all Ant targets
 [build]*.logging*.level = LogLevel.INFO
 
+clean {
+    deleteFolder('classes')
+    deleteFolder('war')
+    deleteFolder('src/main/webapp/jwtdecodedemo')
+}
+
+build.doLast {
+    // Copy GWT module folders
+    copyFilesInFolder('build/gwt/out/jwtdecodedemo', 'src/main/webapp/jwtdecodedemo')
+}
+
+private void deleteFolder(folderPath) {
+    File folder = new File(projectDir, folderPath)
+    if (folder.exists()) {
+        ant.echo('Deleting folder: ' + folder.absolutePath)
+        ant.delete(includeEmptyDirs: 'true') {
+            fileset(dir: folder)
+        }
+    }
+}
+
+private void copyFilesInFolder(sourcePath, destPath) {
+    File sourceDir = new File(projectDir, sourcePath)
+    File destDir = new File(projectDir, destPath)
+    ant.echo('Copying: ' + sourcePath + ' => ' + destPath)
+    if (!destDir.exists()) {
+        destDir.mkdirs()
+    }
+    ant.copy(todir: destDir) {
+        fileset(dir: sourceDir)
+    }
+}
