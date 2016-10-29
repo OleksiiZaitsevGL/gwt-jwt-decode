@@ -42,31 +42,6 @@ dependencies {
     compile 'com.google.gwt:gwt-user:2.7.0'
     compile 'com.google.gwt:gwt-dev:2.7.0'
     compile 'com.google.guava:guava-gwt:19.0'
-
-    runtime 'com.google.gwt:gwt-servlet:2.7.0'
-
-    // Needed for GWT compile and at runtime for RequestBuilder
-    // Specify two artifacts as workaround for GRADLE-1934
-    compile('javax.validation:validation-api:1.0.0.GA') {
-        artifact {
-            name = 'validation-api'
-            type = 'jar'
-        }
-        artifact {
-            name = 'validation-api'
-            type = 'jar'
-            classifier = 'sources'
-        }
-    }
-
-    // GWT-Platform
-    compile 'com.gwtplatform:gwtp-mvp-client:1.5.1'
-
-    // GWT Bootstrap3
-    compile 'org.gwtbootstrap3:gwtbootstrap3:0.9.1'
-
-    // DI
-    compile 'com.google.gwt.inject:gin:2.1.2'
 }
 
 gwt {
